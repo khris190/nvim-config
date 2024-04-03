@@ -24,40 +24,40 @@ return {
 
         require("fidget").setup({})
         require("mason").setup()
-        require("mason-lspconfig").setup({
+        local mason_lsp = require("mason-lspconfig")
+        local lsp = require("lspconfig")
+
+        if not mason_lsp then
+            return
+        end
+        local lspUtils = require("stuff.lazy.lsp_utils")
+
+        mason_lsp.setup {
             ensure_installed = {
                 "lua_ls",
+                "tsserver",
+                "jsonls",
                 "rust_analyzer",
             },
-            handlers = {
-                function(server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {
-                        capabilities = capabilities
-                    }
-                end,
+            automatic_installation = true,
+        }
 
-                ["lua_ls"] = function()
-                    local lspconfig = require("lspconfig")
-                    lspconfig.lua_ls.setup {
-                        capabilities = capabilities,
-                        settings = {
-                            Lua = {
-                                diagnostics = {
-                                    globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                }
-                            }
-                        }
-                    }
-                end,
-            }
-        })
+        mason_lsp.setup_handlers {
+            function(server_name)
+                lsp[server_name].setup {
+                    on_attach = lspUtils.on_attach,
+                    -- capabilities = lspUtils.capabilities,
+                    handlers = lspUtils.handlers,
+                }
+            end,
+        }
 
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
             snippet = {
                 expand = function(args)
-                    require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                    require('luasnip').lsp_expand(args.body)     -- For `luasnip` users.
                 end,
             },
             mapping = cmp.mapping.preset.insert({
@@ -68,7 +68,7 @@ return {
             }),
             sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
-                { name = 'luasnip' }, -- For luasnip users.
+                { name = 'luasnip' },     -- For luasnip users.
             }, {
                 { name = 'buffer' },
             })
