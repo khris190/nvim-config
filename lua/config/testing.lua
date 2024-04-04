@@ -1,7 +1,4 @@
-local neotest = prequire "neotest"
-if not neotest then
-  return
-end
+local neotest = require "neotest"
 
 local signs = require("utils").signs
 

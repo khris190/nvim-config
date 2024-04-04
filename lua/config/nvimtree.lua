@@ -1,11 +1,6 @@
-local nvimtree = prequire "nvim-tree"
-if not nvimtree then
-  return
-end
-
+local nvimtree = require "nvim-tree"
 local utils = require "utils"
 local signs = utils.signs
-
 nvimtree.setup {
   diagnostics = {
     enable = true,
@@ -20,7 +15,7 @@ nvimtree.setup {
     enable = false,
   },
   filters = {
-    dotfiles = false,
+    dotfiles = true,
   },
   view = {
     number = true,

@@ -1,8 +1,4 @@
-local lualine = prequire "lualine"
-if not lualine then
-  return
-end
-
+local lualine = require "lualine"
 local signs = require("utils").signs
 
 local conditions = {

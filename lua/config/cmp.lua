@@ -1,12 +1,6 @@
-local cmp = prequire "cmp"
-if not cmp then
-  return
-end
+local cmp = require "cmp"
 
-local luasnip = prequire "luasnip"
-if not luasnip then
-  return
-end
+local luasnip = require "luasnip"
 
 local cmp_autopairs = require "nvim-autopairs.completion.cmp"
 

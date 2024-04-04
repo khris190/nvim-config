@@ -21,7 +21,7 @@ opt.pumheight = 10
 opt.completeopt = "menu,menuone,noselect"
 
 -- set minimal number of screeen lines above and below cursor
-opt.scrolloff = 1000
+opt.scrolloff = 20
 
 -- make splits open to down and right
 opt.splitbelow = true

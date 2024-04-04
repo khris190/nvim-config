@@ -1,6 +1,6 @@
 -- All plugins are lazy-loaded by default
 return {
-  {
+  --[[{
     "catppuccin/nvim",
     name = "catppuccin",
     config = function()
@@ -9,7 +9,7 @@ return {
     build = ":CatppuccinCompile",
     lazy = false,
   },
-
+]]--
   {
     "nvim-lualine/lualine.nvim",
     event = "BufReadPost",
@@ -188,8 +188,18 @@ return {
     },
   },
 
-  { "folke/which-key.nvim" },
 
+  { "folke/which-key.nvim" },
+  --[[{ "folke/which-key.nvim" },
+  { "folke/which-key.nvim" },
+  { "folke/which-key.nvim" },
+  { "folke/which-key.nvim" },
+  { "folke/which-key.nvim" },
+  { "folke/which-key.nvim" },
+  ]]--
   { "kevinhwang91/nvim-bqf", ft = "qf" },
-  { "mbbill/undotree", }
+  { "mbbill/undotree", },
+  {
+  "jose-elias-alvarez/null-ls.nvim",
+},
 }

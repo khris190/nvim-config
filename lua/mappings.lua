@@ -97,7 +97,7 @@ local leader = {
       s = { "<CMD>Lazy sync<CR>", "sync all" },
     },
     h = { "<CMD>:checkhealth<CR>", "check health" },
-    c = { "<CMD>:Telescope commands<CR>", "commands" },
+   c = { "<CMD>:Telescope commands<CR>", "commands" },
     s = { "<CMD>:Telescope highlights<CR>", "search highlight groups" },
   },
   l = {
@@ -106,9 +106,7 @@ local leader = {
     l = { "<CMD>MasonLog<CR>", "see logs" },
   },
   n = {
-    name = "+filetree",
-    n = { "<CMD>NvimTreeToggle<CR>", "file explorer" },
-    r = { "<CMD>NvimTreeFindFileToggle<CR>", "reveal" },
+   "<CMD>NvimTreeToggle<CR>", "file explorer"
   },
   s = {
     name = "+search",

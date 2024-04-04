@@ -1,9 +1,5 @@
-local mason_lsp = prequire "mason-lspconfig"
-local lsp = prequire "lspconfig"
-
-if not mason_lsp then
-  return
-end
+local mason_lsp = require "mason-lspconfig"
+local lsp = require "lspconfig"
 
 local lspUtils = require "config.lsp_utils"
 

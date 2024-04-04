@@ -1,8 +1,5 @@
-local dap = prequire "dap"
-local dapui = prequire "dapui"
-if not dap then
-  return
-end
+local dap = require "dap"
+local dapui = require "dapui"
 
 require("dap-python").setup "~/.virtualenvs/debugpy/bin/python"
 

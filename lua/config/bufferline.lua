@@ -1,8 +1,4 @@
-local bufferline = prequire "bufferline"
-if not bufferline then
-  return
-end
-
+local bufferline = require "bufferline"
 local signs = require("utils").signs
 
 bufferline.setup {

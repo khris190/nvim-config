@@ -1,7 +1,4 @@
-local telescope = prequire "telescope"
-if not telescope then
-  return
-end
+local telescope = require "telescope"
 
 telescope.setup {
   defaults = {

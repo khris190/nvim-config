@@ -1,9 +1,4 @@
-local mason = prequire "mason"
-
-if not mason then
-  return
-end
-
+local mason = require "mason"
 local signs = require("utils").signs
 
 mason.setup {

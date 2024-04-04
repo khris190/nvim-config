@@ -1,5 +1,5 @@
 local wk = require "which-key"
-local gitsigns = prequire "gitsigns"
+local gitsigns = require "gitsigns"
 
 gitsigns.setup {
   on_attach = function(bufnr)
