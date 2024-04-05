@@ -1,0 +1,10 @@
+
+# move this config to:
+# Linux: ~/.config/lazygit/config.yml
+# MacOS: ~/Library/Application\ Support/lazygit/config.yml
+# Windows: %LOCALAPPDATA%\lazygit\config.yml (default location, but it will also be found in %APPDATA%\lazygit\config.yml
+
+
+os:
+  edit: 'nvim  --server "$NVIM" --remote-tab {{filename}}; nvim --server "$NVIM" < " gg"'
+  open: 'nvim  --server "$NVIM" --remote-tab {{filename}}; nvim --server "$NVIM" < " gg"'
