@@ -23,24 +23,27 @@ dap.configurations.rust = {
     stopOnEntry = false,
   },
 }
---//TODO cpp?
-dap.adapters.lldb = {
-  type = "executable",
-  command = "/usr/bin/lldb-vscode",
-  name = "lldb",
-}
-local cmake = require("cmake-tools")
 
-dap.configurations.cpp = {
-  {
-    name = "Launch",
-    type = "lldb",
-    request = "launch",
-    program = function()
-      return cmake.get_launch_path(cmake.get_launch_target()) .. cmake.get_launch_target()
-    end,
-    cwd = cmake.get_launch_path(cmake.get_launch_target()),
-    stopOnEntry = false,
-    args = {},
-  },
-}
+local cmake = require("cmake-tools")
+if cmake.is_cmake_project() then
+  --//TODO add options for non cmake cpp project?
+  dap.adapters.lldb = {
+    type = "executable",
+    command = "/usr/bin/lldb-vscode",
+    name = "lldb",
+  }
+
+  dap.configurations.cpp = {
+    {
+      name = "Launch",
+      type = "lldb",
+      request = "launch",
+      program = function()
+        return cmake.get_launch_path(cmake.get_launch_target()) .. cmake.get_launch_target()
+      end,
+      cwd = cmake.get_launch_path(cmake.get_launch_target()),
+      stopOnEntry = false,
+      args = {},
+    },
+  }
+end
