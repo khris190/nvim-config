@@ -47,3 +47,4 @@ require("lazy").setup({
 })
 require("config.lazygit")
 require("config.dap")
+require("config.cmake.init")
