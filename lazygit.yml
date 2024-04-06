@@ -6,5 +6,6 @@
 
 
 os:
-  edit: 'nvim  --server "$NVIM" --remote-tab {{filename}}; nvim --server "$NVIM" < " gg"'
-  open: 'nvim  --server "$NVIM" --remote-tab {{filename}}; nvim --server "$NVIM" < " gg"'
+  editPreset: 'nvim-remote'
+  edit: "nvr --remote-send '<CR><CMD>q<CR><CMD>lua local root = vim.fn.trim(vim.fn.system(\"git rev-parse --show-toplevel\")); vim.cmd(\"e \" .. root .. \"/\" .. {{filename}})<CR>'"
+
