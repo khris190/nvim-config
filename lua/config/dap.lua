@@ -23,27 +23,24 @@ dap.configurations.rust = {
     stopOnEntry = false,
   },
 }
--- cpp?
+--//TODO cpp?
 dap.adapters.lldb = {
   type = "executable",
-  command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+  command = "/usr/bin/lldb-vscode",
   name = "lldb",
 }
+local cmake = require("cmake-tools")
 
 dap.configurations.cpp = {
   {
     name = "Launch",
     type = "lldb",
     request = "launch",
-    program = "${command:cmake.launchTargetPath}",
-    cwd = "${workspaceFolder}",
+    program = function()
+      return cmake.get_launch_path(cmake.get_launch_target()) .. cmake.get_launch_target()
+    end,
+    cwd = cmake.get_launch_path(cmake.get_launch_target()),
     stopOnEntry = false,
     args = {},
-    environment = {
-      {
-        name = "PATH",
-        value = "$PATH:${command:cmake.launchTargetDirectory}",
-      },
-    },
   },
 }
