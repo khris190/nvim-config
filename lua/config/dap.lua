@@ -18,7 +18,10 @@ dap.configurations.rust = {
     name = "Launch",
     type = "rust",
     request = "launch",
-    program = "${workspaceFolder}/target/debug/${workspaceFolderBasename}",
+    program = function()
+      vim.fn.system("cargo build")
+      return "${workspaceFolder}/target/debug/${workspaceFolderBasename}"
+    end,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
   },
