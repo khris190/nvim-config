@@ -19,7 +19,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.keymap.set("n", "<A-s>", function()
   vim.cmd("w")
 end)
-
+-- add space dd to start debugging so i can get my custom debug runner for cmake
+vim.keymap.set("n", "<leader>dd", function()
+  require("dap").continue()
+end, { desc = "Continue" })
 -- tabs
 vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 vim.keymap.set("n", "<leader><tab>d", function()
