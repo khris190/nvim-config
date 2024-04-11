@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
-vim.keymap.set("n", "<A-s>", function()
+vim.keymap.set({ "n", "i" }, "<A-s>", function()
   vim.cmd("w")
 end)
 -- add space dd to start debugging so i can get my custom debug runner for cmake
