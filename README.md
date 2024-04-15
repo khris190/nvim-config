@@ -14,3 +14,4 @@ alias nvim='echo -ne "\033]0;" $(basename "$(pwd)")"\007"; nvim'
 - neovim-remote
 - lldb
 - lazygit
+- ripgrep
