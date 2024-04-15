@@ -17,6 +17,7 @@ alias to rename tabs:
   fi
   echo -ne "\033]0;"$repo_name"\007"; nvim'
 ```
+
 ## requirements
 - neovim-remote
 - lldb
@@ -32,6 +33,7 @@ local function autogroup(name)
 end
 vim.api.nvim_create_autocmd("BufEnter", {
 	group = autogroup("remove_ts_formatting"),
+  desc = "Turns off tsserver Formatting for .ts files",
 	pattern = { "*.ts" },
 	callback = function(ev)
 		print("callback")
