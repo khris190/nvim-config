@@ -8,8 +8,9 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 ## for warp
 use alt as modifier in warp
 alias to rename tabs:
+```bash
 alias nvim='echo -ne "\033]0;" $(basename "$(pwd)")"\007"; nvim'
-
+```
 ## requirements
 - neovim-remote
 - lldb
@@ -18,6 +19,7 @@ alias nvim='echo -ne "\033]0;" $(basename "$(pwd)")"\007"; nvim'
 
 
 ## turn format off for ts for use with local config
+```lua
 local function autogroup(name)
 	return vim.api.nvim_create_augroup("local_config_" .. name, { clear = true })
 end
@@ -35,3 +37,4 @@ vim.api.nvim_create_autocmd("BufEnter", {
 		end
 	end,
 })
+```
