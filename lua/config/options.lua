@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.opt.wrap = false -- Disable line wrap
+vim.opt.colorcolumn = "80,120" -- ad colorcolumns
