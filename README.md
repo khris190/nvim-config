@@ -9,12 +9,19 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 use alt as modifier in warp
 alias to rename tabs:
 ```bash
-alias nvim='echo -ne "\033]0;" $(basename "$(pwd)")"\007"; nvim'
+  alias nvim='
+  if [ -n "$(git config --get remote.origin.url)" ]; then
+    repo_name=$(basename -s .git $(git config --get remote.origin.url))
+  else
+    repo_name=$(basename "$(pwd)")
+  fi
+  echo -ne "\033]0;"$repo_name"\007"; nvim'
 ```
 ## requirements
 - neovim-remote
 - lldb
-- lazygit
+<!--   currently lazygit doesn't hide on edit so i added <CMD>q<CR> to the command, just remember that if its fixed it might need to be removed -->
+- lazygit 
 - ripgrep
 
 
