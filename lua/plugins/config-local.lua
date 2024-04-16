@@ -1,5 +1,5 @@
 return {
-  "klen/nvim-config-local",
+  "khris190/nvim-config-local",
   config = function()
     require("config-local").setup({
       -- Default options (optional)
