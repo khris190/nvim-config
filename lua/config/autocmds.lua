@@ -4,13 +4,25 @@
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.rs" },
   callback = function(ev)
-    vim.schedule(function()
-      vim.api.nvim_buf_set_keymap(0, "n", "<A-r>", "", {
-        callback = function()
-          -- vim.cmd("RustRun")
-          print("Alt in Rust file")
-        end,
-      })
-    end)
+    vim.api.nvim_buf_set_keymap(0, "n", "<A-r>", "", {
+      callback = function()
+        -- vim.cmd("RustRun")
+        print("Alt in Rust file")
+      end,
+    })
   end,
 })
+-- fucking kill me it highlights links in md, what is the pattern for highlight buffer window
+vim.api.nvim_create_autocmd({ "BufWinEnter", "InsertEnter", "InsertLeave" }, {
+  pattern = { "*" },
+  callback = function(ev)
+    vim.cmd("highlight MyMdLinkPatternHighlight guifg=lightBlue gui=underline ")
+    vim.cmd([[match MyMDLinkPatternHighlight /\v\[[^\]\[]+\]\([^\(\)]+\)/]])
+    print(require("helpers").dump(ev))
+  end,
+})
+-- vim.api.nvim_create_autocmd(
+--   "BufWinLeave",
+--   { pattern = { "*.md" }, callback = vim.cmd("highlight clear MyMdLinkPatternHighlight") }
+-- )
+--[test tes](hello)
