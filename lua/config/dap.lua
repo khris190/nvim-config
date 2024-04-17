@@ -3,54 +3,49 @@ local mason_registry = require("mason-registry")
 local codelldb_root = mason_registry.get_package("codelldb"):get_install_path() .. "/extension/"
 local codelldb_path = codelldb_root .. "adapter/codelldb"
 local liblldb_path = codelldb_root .. "lldb/lib/liblldb.so"
-dap.adapters.rust = {
-  type = "server",
-  port = "${port}",
-  host = "127.0.0.1",
-  executable = {
-    command = codelldb_path,
-    args = { "--liblldb", liblldb_path, "--port", "${port}" },
-  },
-}
 
+require("dap").adapters.lldb = {
+  type = "executable",
+  command = "/usr/bin/lldb-vscode", -- adjust as needed
+  name = "lldb",
+}
 dap.configurations.rust = {
   {
-    name = "Launch",
-    type = "rust",
-    request = "launch",
+    name = "Launch lldb",
+    type = "lldb", -- matches the adapter
+    request = "launch", -- could also attach to a currently running process
     program = function()
-      vim.fn.system("cargo build")
+      print(os.execute("cargo build"))
       return "${workspaceFolder}/target/debug/${workspaceFolderBasename}"
     end,
     cwd = "${workspaceFolder}",
     stopOnEntry = false,
+    args = {},
+    showDisassembly = "never",
   },
 }
 
 local cmake = require("cmake-tools")
-
-if cmake.is_cmake_project() then
-  vim.keymap.set("n", "<leader>dd", function()
-    cmake.debug({ bang = false })
-  end, { desc = "Debug" })
-  -- --//TODO add options for non cmake cpp project?
-  -- dap.adapters.lldb = {
-  --   type = "executable",
-  --   command = "/usr/bin/lldb-vscode",
-  --   name = "lldb",
-  -- }
-  --
+if cmake.is_cmake_project() == false then
+  --//TODO add options for non cmake cpp project?
   -- dap.configurations.cpp = {
   --   {
-  --     name = "Launch",
-  --     type = "lldb",
-  --     request = "launch",
+  --     name = "Launch lldb",
+  --     type = "lldb", -- matches the adapter
+  --     request = "launch", -- could also attach to a currently running process
+  --
   --     program = function()
-  --       -- return cmake.get_launch_path(cmake.get_launch_target()) .. cmake.get_launch_target()
+  --       -- cmake.build({ bang = false }, function()
+  --       --   vim.notify("Cmake build success")
+  --       -- end)
+  --       -- cmake.debug({ bang = false })
   --     end,
-  --     cwd = cmake.get_launch_path(cmake.get_launch_target()),
+  --     cwd = function()
+  --       return cmake.get_launch_path(cmake.get_launch_target())
+  --     end,
   --     stopOnEntry = false,
   --     args = {},
+  --     showDisassembly = "never",
   --   },
   -- }
 end

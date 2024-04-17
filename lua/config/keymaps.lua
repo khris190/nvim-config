@@ -6,9 +6,18 @@ vim.keymap.set({ "n", "i" }, "<A-s>", function()
   vim.cmd("w")
 end)
 -- add space dd to start debugging so i can get my custom debug runner for cmake
-vim.keymap.set("n", "<leader>dd", function()
-  require("dap").continue()
-end, { desc = "Continue" })
+
+local cmake = require("cmake-tools")
+if cmake.is_cmake_project() then
+  vim.keymap.set("n", "<leader>dd", function()
+    cmake.debug({ bang = false })
+  end, { desc = "Debug" })
+else
+  vim.keymap.set("n", "<leader>dd", function()
+    require("dap").continue()
+  end, { desc = "Debug/Continue" })
+end
+
 -- tabs
 vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 vim.keymap.set("n", "<leader><tab>d", function()
