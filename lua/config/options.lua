@@ -4,3 +4,5 @@
 
 vim.opt.wrap = false -- Disable line wrap
 vim.opt.colorcolumn = "80,120" -- ad colorcolumns
+vim.opt.tabstop = 4
+vim.opt.scrolloff = 10
