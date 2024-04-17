@@ -1,0 +1,2 @@
+CompileFlags:
+  CompilationDatabase: <dir with compile_commands.json> // or symlink compile_commands to project root
