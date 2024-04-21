@@ -22,8 +22,3 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "InsertEnter", "InsertLeave" }, {
     end
   end,
 })
--- vim.api.nvim_create_autocmd(
---   "BufWinLeave",
---   { pattern = { "*.md" }, callback = vim.cmd("highlight clear MyMdLinkPatternHighlight") }
--- )
---[test tes](hello)
