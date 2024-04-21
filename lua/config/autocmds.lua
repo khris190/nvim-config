@@ -16,9 +16,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd({ "BufWinEnter", "InsertEnter", "InsertLeave" }, {
   pattern = { "*" },
   callback = function(ev)
-    vim.cmd("highlight MyMdLinkPatternHighlight guifg=lightBlue gui=underline ")
-    vim.cmd([[match MyMDLinkPatternHighlight /\v\[[^\]\[]+\]\([^\(\)]+\)/]])
-    print(require("helpers").dump(ev))
+    if ev.file == "" then
+      vim.cmd("highlight MyMdLinkPatternHighlight guifg=lightBlue gui=underline ")
+      vim.cmd([[match MyMDLinkPatternHighlight /\v\[[^\]\[]+\]\([^\(\)]+\)/]])
+    end
   end,
 })
 -- vim.api.nvim_create_autocmd(
