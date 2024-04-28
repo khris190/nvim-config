@@ -20,7 +20,7 @@ if cmake.is_cmake_project() then
   vim.keymap.set("n", "<leader>dx", function()
     cmake.generate({ bang = false }, function()
       cmake.build({ bang = false }, function()
-        cmake.run_test()
+        cmake.run_test({ args = "--output-on-failure" })
       end)
     end)
   end, { desc = "run tests" })
