@@ -16,8 +16,9 @@ return {
   --   enabled = false,
   -- },
   {
+    "Civitasv/cmake-tools.nvim",
     -- "khris190/cmake-tools.nvim",
-    "git@github.com:khris190/cmake-tools.nvim.git",
+    -- "git@github.com:khris190/cmake-tools.nvim.git",
     -- dependencies = {
     --   "akinsho/toggleterm.nvim",
     -- },
