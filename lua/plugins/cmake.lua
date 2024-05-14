@@ -21,15 +21,15 @@ return {
     -- dependencies = {
     --   "akinsho/toggleterm.nvim",
     -- },
-    -- opts = {
-    --   cmake_runner = {
-    --     name = "toggleterm",
-    --     opts = {
-    --       direction = "horizontal",
-    --     },
-    --   },
-    -- },
-    branch = "runAllCTests",
+    opts = {
+      -- cmake_executor = {
+      --   name = "terminal",
+      -- },
+      cmake_runner = {
+        name = "terminal",
+      },
+    },
+    -- branch = "runAllCTests",
     lazy = true,
     init = function()
       local loaded = false
