@@ -56,7 +56,7 @@ callback
 install in ~/AppData/Local/nvim
 
 ``` bash
-choco install go rust ripgrep lazygit git nvm nerd-fonts-jetbrainsmono mingw
+choco install go rust ripgrep lazygit git nvm nerd-fonts-jetbrainsmono mingw cmake
 nvm install latest
 nvm use latest
 ```
