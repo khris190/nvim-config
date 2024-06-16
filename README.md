@@ -61,4 +61,5 @@ nvm install latest
 nvm use latest
 ```
 
+add cmake to path?
 move lazygit.yml to proper dir explained inside

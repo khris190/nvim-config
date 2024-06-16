@@ -1,10 +1,9 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-
-vim.keymap.set({ "n", "i" }, "<A-s>", function()
-  vim.cmd("w")
-end)
+-- vim.keymap.set({ "n", "i" }, "<A-s>", function()
+--   vim.cmd("w")
+-- end)
 -- add space dd to start debugging so i can get my custom debug runner for cmake
 
 local cmake = require("cmake-tools")
@@ -24,6 +23,11 @@ if cmake.is_cmake_project() then
       end)
     end)
   end, { desc = "run tests" })
+  -- vim.keymap.set("n", "<leader>dz", function()
+  --   cmake.select_launch_target(function()
+  --     vim.cmd("CMakeRun")
+  --   end)
+  -- end, { desc = "check stufcf" })
 else
   vim.keymap.set("n", "<leader>dd", function()
     require("dap").continue()
