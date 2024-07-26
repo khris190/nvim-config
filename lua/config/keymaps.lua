@@ -52,3 +52,12 @@ vim.keymap.set("n", "<leader><tab>d", function()
 end, { desc = "Delete Buffer" })
 vim.keymap.set("n", "<leader><tab>[", "<cmd>BufferLineCyclePrev<cr>", { desc = "Previous Tab" })
 vim.keymap.set("n", "<leader><tab>]", "<cmd>BufferLineCycleNext<cr>", { desc = "Next Tab" })
+
+-- dir telescope
+
+vim.keymap.set("n", "<leader>sG", function()
+  require("telescope").extensions.dir.live_grep()
+end, { desc = "find in directory" })
+vim.keymap.set("n", "<leader>fF", function()
+  require("telescope").extensions.dir.find_files()
+end, { desc = "find file in dir" })
