@@ -1,27 +1,25 @@
 return {
   {
     "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
+    config = function()
+      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       local nls = require("null-ls")
       local composer_dir = vim.fn.getcwd()
       local composer_bin_dir = composer_dir .. "/vendor/bin"
 
-      vim.list_extend(opts.sources, {
-        nls.builtins.formatting.phpcsfixer.with({
-          command = composer_bin_dir .. "/php-cs-fixer",
-          extra_args = {
-            "--config=" .. composer_dir .. "/.php-cs-fixer.dist.php",
-          },
-        }),
-        nls.builtins.diagnostics.phpcs.with({
-          command = composer_bin_dir .. "/phpcs",
-          extra_args = { "--standard=" .. composer_dir .. "/.phpcs.xml" },
-        }),
-      })
-    end,
-    config = function()
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       require("null-ls").setup({
+        sources = {
+          nls.builtins.formatting.phpcsfixer.with({
+            command = composer_bin_dir .. "/php-cs-fixer",
+            extra_args = {
+              "--config=" .. composer_dir .. "/.php-cs-fixer.dist.php",
+            },
+          }),
+          nls.builtins.diagnostics.phpcs.with({
+            command = composer_bin_dir .. "/phpcs",
+            extra_args = { "--standard=" .. composer_dir .. "/.phpcs.xml" },
+          }),
+        },
         -- you can reuse a shared lspconfig on_attach callback here
         on_attach = function(client, bufnr)
           if client.supports_method("textDocument/formatting") then
