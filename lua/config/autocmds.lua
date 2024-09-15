@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 -- fucking kill me it highlights links in md, what is the pattern for highlight buffer window
 vim.api.nvim_create_autocmd({ "BufWinEnter", "InsertEnter", "InsertLeave" }, {
-  pattern = { "*" },
+  pattern = { "", "*.md" },
   callback = function(ev)
     if ev.file == "" then
       vim.cmd("highlight MyMdLinkPatternHighlight guifg=lightBlue gui=underline ")

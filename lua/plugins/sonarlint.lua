@@ -1,45 +1,41 @@
 return {
---   url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
---   -- ft = { "python", "cpp", "java", "c" },
---
---   dependencies = {
---     "williamboman/mason.nvim",
---     "git@github.com:khris190/cmake-tools.nvim.git",
---   },
---   config = function()
---     local sonar_language_server_path =
---       require("mason-registry").get_package("sonarlint-language-server"):get_install_path()
---     local analyzers_path = sonar_language_server_path .. "/extension/analyzers"
---     print(sonar_language_server_path)
---     print(require("cmake-tools.config"):build_directory_path() .. "/compile_commands.json")
---     require("sonarlint").setup({
---       server = {
---         cmd = {
---           sonar_language_server_path .. "/sonarlint-language-server",
---           "-stdio",
---           "-analyzers",
---           vim.fn.expand(analyzers_path .. "/sonarpython.jar"),
---           vim.fn.expand(analyzers_path .. "/sonarcfamily.jar"),
---           vim.fn.expand(analyzers_path .. "/sonarjava.jar"),
---           vim.fn.expand(analyzers_path .. "/sonarjs.jar"),
---           vim.fn.expand(analyzers_path .. "/sonarphp.jar"),
---         },
---       },
---       filetypes = {
---         "python",
---         "cpp",
---         "c",
---         "js",
---         "ts",
---         "php",
---       },
---       settings = {
---         sonarlint = {
---           pathToCompileCommands = function()
---             return require("cmake-tools.config"):build_directory_path() .. "/compile_commands.json"
---           end,
---         },
---       },
---     })
---   end,
+  -- not really usable but at least working
+  -- {
+  --   url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
+  --   -- ft = { "python", "cpp", "java", "c" },
+  --   lazy = true,
+  --   ft = { "cpp", "c" },
+  --   dependencies = {
+  --     "williamboman/mason.nvim",
+  --   },
+  --   priority = 60,
+  --   config = function()
+  --     local sonar_language_server_path =
+  --       require("mason-registry").get_package("sonarlint-language-server"):get_install_path()
+  --     local analyzers_path = sonar_language_server_path .. "/extension/analyzers"
+  --     -- print(require("cmake-tools").config:build_directory_path() .. "/compile_commands.json")
+  --     local comm = (vim.uv.cwd() .. "/compile_commands.json")
+  --     require("sonarlint").setup({
+  --       server = {
+  --         cmd = {
+  --           sonar_language_server_path .. "/sonarlint-language-server",
+  --           "-stdio",
+  --           "-analyzers",
+  --           vim.fn.expand(analyzers_path .. "/sonarcfamily.jar"),
+  --         },
+  --         settings = {
+  --           sonarlint = {
+  --             pathToCompileCommands = comm,
+  --             -- rules = { ["cpp:S5025"] = { lebel = "on" } },
+  --             test = "test",
+  --           },
+  --         },
+  --       },
+  --       filetypes = {
+  --         "cpp",
+  --         "c",
+  --       },
+  --     })
+  --   end,
+  -- },
 }
