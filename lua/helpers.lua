@@ -14,4 +14,19 @@ function M.dump(o)
     return tostring(o)
   end
 end
+
+function M.writeArr(file)
+  local arr = require("tohtml").tohtml()
+  local file_descriptor = io.open(file, "w+")
+  if file_descriptor == nil then
+    print("file is null")
+    return
+  end
+  for key, line in pairs(arr) do
+    print(line)
+    file_descriptor:write(line)
+    file_descriptor:write("\n")
+  end
+end
+
 return M

@@ -55,9 +55,9 @@ vim.keymap.set("n", "<leader><tab>]", "<cmd>BufferLineCycleNext<cr>", { desc = "
 
 -- dir telescope
 
-vim.keymap.set("n", "<leader>sG", function()
-  require("telescope").extensions.dir.live_grep()
-end, { desc = "find in directory" })
-vim.keymap.set("n", "<leader>fF", function()
-  require("telescope").extensions.dir.find_files()
-end, { desc = "find file in dir" })
+-- vim.keymap.set("n", "<leader>sG", function()
+--   require("telescope").extensions.dir.live_grep()
+-- end, { desc = "find in directory" })
+-- vim.keymap.set("n", "<leader>fF", function()
+--   require("telescope").extensions.dir.find_files()
+-- end, { desc = "find file in dir" })
