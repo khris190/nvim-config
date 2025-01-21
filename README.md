@@ -24,6 +24,7 @@ alias to rename tabs:
 - lldb
 - lazygit
 - ripgrep
+- fzf
 
 ## turn format off for ts for use with local config
 
