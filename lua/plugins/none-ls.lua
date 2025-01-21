@@ -8,18 +8,18 @@ return {
       local composer_bin_dir = composer_dir .. "/vendor/bin"
 
       require("null-ls").setup({
-        sources = {
-          nls.builtins.formatting.phpcsfixer.with({
-            command = composer_bin_dir .. "/php-cs-fixer",
-            extra_args = {
-              "--config=" .. composer_dir .. "/.php-cs-fixer.dist.php",
-            },
-          }),
-          nls.builtins.diagnostics.phpcs.with({
-            command = composer_bin_dir .. "/phpcs",
-            extra_args = { "--standard=" .. composer_dir .. "/.phpcs.xml" },
-          }),
-        },
+        -- sources = {
+        --   nls.builtins.formatting.phpcsfixer.with({
+        --     command = composer_bin_dir .. "/php-cs-fixer",
+        --     extra_args = {
+        --       "--config=" .. composer_dir .. "/.php-cs-fixer.dist.php",
+        --     },
+        --   }),
+        --   nls.builtins.diagnostics.phpcs.with({
+        --     command = composer_bin_dir .. "/phpcs",
+        --     extra_args = { "--standard=" .. composer_dir .. "/.phpcs.xml" },
+        --   }),
+        -- },
         -- you can reuse a shared lspconfig on_attach callback here
         on_attach = function(client, bufnr)
           if client.supports_method("textDocument/formatting") then
