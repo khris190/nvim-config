@@ -25,6 +25,18 @@ alias to rename tabs:
 - lazygit
 - ripgrep
 - fzf
+- fd
+- golang
+- rustup
+- rust
+- cargo
+- python
+- pip
+- npm
+- nvm (maybe)
+
+move lazygit.yml to proper dir explained inside
+
 
 ## turn format off for ts for use with local config
 
