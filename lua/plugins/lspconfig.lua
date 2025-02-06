@@ -13,7 +13,8 @@ return {
     },
     setup = {
       svelte = function()
-        require("lazyvim.util").lsp.on_attach(function(client)
+        require("lazyvim.util").lsp.on_attach(function(client, bufnr)
+          require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
           if client.name == "svelte" then
             client.server_capabilities.documentFormattingProvider = false
           end

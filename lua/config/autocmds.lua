@@ -13,12 +13,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 -- fucking kill me it highlights links in md, what is the pattern for highlight buffer window
-vim.api.nvim_create_autocmd({ "BufWinEnter", "InsertEnter", "InsertLeave" }, {
-  pattern = { "", "*.md" },
-  callback = function(ev)
-    if ev.file == "" then
-      vim.cmd("highlight MyMdLinkPatternHighlight guifg=lightBlue gui=underline ")
-      vim.cmd([[match MyMDLinkPatternHighlight /\v\[[^\]\[]+\]\([^\(\)]+\)/]])
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "BufWinEnter", "InsertEnter", "InsertLeave" }, {
+--   pattern = { "*" },
+--   callback = function(ev)
+--     if ev.file == "" then
+--       vim.cmd("highlight MyMdLinkPatternHighlight guifg=lightBlue gui=underline ")
+--       vim.cmd([[match MyMDLinkPatternHighlight /\v\[[^\]\[]+\]\([^\(\)]+\)/]])
+--     end
+--   end,
+-- })
