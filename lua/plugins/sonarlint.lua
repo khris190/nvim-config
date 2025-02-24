@@ -1,5 +1,6 @@
 return {
   -- not really usable but at least working
+  -- globally disabled rules seem to be in cache files in .cache/nvim/luac/
   {
     url = "https://gitlab.com/schrieveslaach/sonarlint.nvim",
     -- ft = { "python", "cpp", "java", "c" },

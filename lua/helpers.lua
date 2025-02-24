@@ -22,7 +22,7 @@ function M.writeArr(file)
     print("file is null")
     return
   end
-  for key, line in pairs(arr) do
+  for _, line in pairs(arr) do
     print(line)
     file_descriptor:write(line)
     file_descriptor:write("\n")

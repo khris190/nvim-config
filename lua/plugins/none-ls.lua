@@ -3,9 +3,9 @@ return {
     "nvimtools/none-ls.nvim",
     config = function()
       local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-      local nls = require("null-ls")
-      local composer_dir = vim.fn.getcwd()
-      local composer_bin_dir = composer_dir .. "/vendor/bin"
+      -- local nls = require("null-ls")
+      -- local composer_dir = vim.fn.getcwd()
+      -- local composer_bin_dir = composer_dir .. "/vendor/bin"
 
       require("null-ls").setup({
         -- sources = {
