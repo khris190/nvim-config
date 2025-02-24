@@ -33,7 +33,7 @@ alias to rename tabs:
 - python
 - pip
 - npm
-- nvm (maybe)
+- java17 (for sonarlint)
 
 move lazygit.yml to proper dir explained inside
 
