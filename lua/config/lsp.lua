@@ -17,3 +17,5 @@ lspconfig.ts_ls.setup({
   },
   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 })
+
+require("lspconfig").volar.setup({})

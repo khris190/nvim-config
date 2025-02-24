@@ -20,6 +20,9 @@ return {
           end
         end)
       end,
+      -- clangd = function(_, opts)
+      --   table.insert(opts.cmd, "--query-driver=/usr/bin/arm-none-eabi-g*")
+      -- end,
     },
     -- config = function()
     --   local mason_registry = require("mason-registry")

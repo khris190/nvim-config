@@ -1,8 +1,4 @@
 local dap = require("dap")
-local mason_registry = require("mason-registry")
-local codelldb_root = mason_registry.get_package("codelldb"):get_install_path() .. "/extension/"
-local codelldb_path = codelldb_root .. "adapter/codelldb"
-local liblldb_path = codelldb_root .. "lldb/lib/liblldb.so"
 
 require("dap").adapters.lldb = {
   type = "executable",
@@ -36,10 +32,6 @@ if cmake.is_cmake_project() == false then
 
       program = function()
         return cmake.get_launch_path(cmake.get_launch_target()) .. cmake.get_launch_target()
-        -- cmake.build({ bang = false }, function()
-        --   vim.notify("Cmake build success")
-        -- end)
-        -- cmake.debug({ bang = false })
       end,
       cwd = function()
         return cmake.get_launch_path(cmake.get_launch_target())
