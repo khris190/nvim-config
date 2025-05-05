@@ -15,7 +15,7 @@ lspconfig.ts_ls.setup({
       },
     },
   },
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "svlete" },
 })
 
 require("lspconfig").volar.setup({})

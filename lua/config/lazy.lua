@@ -48,3 +48,9 @@ require("lazy").setup({
 require("config.dap")
 require("config.cmake.init")
 require("config.lsp")
+
+-- require("lazyvim.util").lsp.on_attach(function(client, buf)
+--   if client.name == "marksman" then
+--     client.server_capabilities.documentFormattingProvider = false
+--   end
+-- end)
