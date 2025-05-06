@@ -1,6 +1,6 @@
 -- If you are using mason.nvim, you can get the ts_plugin_path like this
 local mason_registry = require("mason-registry")
-local vue_language_server_path = mason_registry.get_package("vue-language-server"):get_install_path()
+local vue_language_server_path = vim.fn.expand("$MASON/packages/vue-language-server")
   .. "/node_modules/@vue/language-server"
 
 local lspconfig = require("lspconfig")
