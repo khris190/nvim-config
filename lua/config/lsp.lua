@@ -15,7 +15,11 @@ lspconfig.ts_ls.setup({
       },
     },
   },
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "svlete" },
+  filetypes = { "javascript", "javascriptreact", "typescriptreact", "vue", "svlete" },
+})
+require("lspconfig").clangd.setup({
+  cmd = { "clangd", "--clang-tidy", "--clang-tidy-checks=-*,bugprone-exception-escape" },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
 })
 
 require("lspconfig").volar.setup({})

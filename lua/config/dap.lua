@@ -1,10 +1,10 @@
 local dap = require("dap")
 
--- require("dap").adapters.lldb = {
---   type = "executable",
---   command = "/usr/bin/lldb", -- adjust as needed
---   name = "lldb",
--- }
+require("dap").adapters.lldb = {
+  type = "executable",
+  command = "/usr/bin/lldb-dap",
+  name = "lldb",
+}
 dap.adapters.gdb = {
   type = "executable",
   command = "gdb",
@@ -45,13 +45,13 @@ if cmake.is_cmake_project() == true then
       -- stopOnEntry = true,
       -- args = {},
       -- showDisassembly = "never",
-      setupCommands = {
-        {
-          text = "-enable-pretty-printing",
-          description = "enable pretty printing",
-          ignoreFailures = false,
-        },
-      },
+      -- setupCommands = {
+      --   {
+      --     text = "-enable-pretty-printing",
+      --     description = "enable pretty printing",
+      --     ignoreFailures = false,
+      --   },
+      -- },
     },
   }
 end
